@@ -59,7 +59,7 @@ class LikertScale extends React.Component {
 
     return (
       <fieldset className={cn} ref={likertRef} id={id || hash} {...restProps}>
-        <legend>{question}</legend>
+        <legend className='likertLegend'>{question}</legend>
         <div className='likertBand'>{radios}</div>
       </fieldset>
     );
@@ -67,13 +67,13 @@ class LikertScale extends React.Component {
 
   onChange = (evt) => {
     if (typeof this.props.onChange === 'function') {
-      this.props.onChange(evt.target.value);
+      this.props.onChange(this.getResponsesItem(evt.target.value));
     } else if (typeof this.props.picked === 'function') {
       // eslint-disable-next-line no-console
       console.warn(
         'Deprecation: The “picked” callback has been renamed; use “onChange” instead.'
       );
-      this.props.picked(evt.target.value);
+      this.props.picked(this.getResponsesItem(evt.target.value));
     }
   };
 
@@ -82,6 +82,11 @@ class LikertScale extends React.Component {
       this.setState({ isKeyboardUser: true });
     }
   };
+
+  getResponsesItem = (value) => {
+    // TODO: Harden this code and write tests
+    return this.props.responses.find((item) => item.value == value);
+  }
 }
 
 export default React.forwardRef((props, ref) => (

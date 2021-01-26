@@ -1,9 +1,13 @@
 .likertScale {
   margin-bottom: 1em;
+  border: none;
+}
+.likertLegend {
+  text-align: center;
 }
 .likertBand {
   display: flex;
-  padding-top: 1em;
+  padding-top: 0.3em;
 }
 .likertResponse {
   flex: 1 1 5em;
