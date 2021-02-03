@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import Likert from './likert.js';
 
 const likertOptions = {
-  question: 'What is your opinion of the President’s performance?',
+  question: 'What is your opinion of the President of the United State’s performance?',
   responses: [
     { value: 1, text: 'Abysmal' },
     { value: 2, text: 'Poor' },

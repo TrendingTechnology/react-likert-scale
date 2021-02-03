@@ -58,8 +58,15 @@ class LikertScale extends React.Component {
     cn += this.state.isKeyboardUser ? ' isKeyboardUser' : '';
 
     return (
-      <fieldset className={cn} ref={likertRef} id={id || hash} {...restProps}>
-        <legend className='likertLegend'>{question}</legend>
+      <fieldset
+        className={cn}
+        ref={likertRef}
+        id={id || hash}
+        {...restProps}
+        aria-labelledby={`legend-${hash}`}
+      >
+        {/* Normally the following line would be a <legend> tag but that does not play well with Flexbox. */}
+        <div id={`legend-${hash}`} className='likertLegend'>{question}</div>
         <div className='likertBand'>{radios}</div>
       </fieldset>
     );
@@ -86,7 +93,7 @@ class LikertScale extends React.Component {
   getResponsesItem = (value) => {
     // TODO: Harden this code and write tests
     return this.props.responses.find((item) => item.value == value);
-  }
+  };
 }
 
 export default React.forwardRef((props, ref) => (

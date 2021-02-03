@@ -4,7 +4,7 @@ import DemoSingle from './demo-single.js';
 import DemoMultiple from './demo-multiple.js';
 
 function PreviewComponent() {
-  const [version, setVersion] = useState('single');
+  const [version, setVersion] = useState('multiple');
 
   let scenario = null;
 
